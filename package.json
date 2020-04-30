@@ -1,0 +1,52 @@
+{
+	"name": "roblox-api-raw",
+	"version": "2.1.2",
+	"description": "Shared ESLint configuration I use across my TypeScript projects.",
+	"license": "MIT",
+	"repository": "seancroach/eslint-config-typescript",
+	"author": "Sean Colin Roach <me@seancroach.com> (http://seancroach.com)",
+	"main": "index.js",
+	"engines": {
+		"node": ">=10"
+	},
+	"scripts": {
+		"prettier": "prettier '**/*' --write",
+		"prettier:check": "prettier '**/*' --check",
+		"test": "npm run prettier:check && ava",
+		"test:verbose": "npm run prettier:check && ava --verbose"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"api",
+		"dump",
+		"raw",
+		"roblox"
+	],
+	"devDependencies": {
+		"@seancroach/eslint-config-typescript": "^2.1.2",
+		"@seancroach/tsconfig": "^1.1.3",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"ava": "^3.8.1",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-prettier": "^3.1.3",
+		"husky": "^4.2.5",
+		"prettier": "^2.0.5",
+		"prettier-plugin-package": "^1.0.0",
+		"typescript": "^3.8.3"
+	},
+	"eslintConfig": {
+		"extends": "@seancroach/eslint-config-typescript"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm test"
+		}
+	},
+	"prettier": {
+		"trailingComma": "es5"
+	}
+}
