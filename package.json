@@ -1,12 +1,12 @@
 {
 	"name": "roblox-api-raw",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"publishConfig": {
 		"access": "public"
 	},
 	"description": "Retrieve the raw JSON Roblox API Dump.",
 	"license": "MIT",
-	"repository": "seancroach/eslint-config-typescript",
+	"repository": "seancroach/roblox-api-raw",
 	"author": "Sean Colin Roach <me@seancroach.com> (http://seancroach.com)",
 	"homepage": "https://seancroach.github.io/roblox-api-raw/index.html",
 	"main": "dist/index.js",
@@ -51,7 +51,6 @@
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-prettier": "^3.1.3",
-		"husky": "^4.2.5",
 		"prettier": "^2.0.5",
 		"prettier-plugin-package": "^1.0.0",
 		"ts-node": "^8.9.1",
@@ -72,11 +71,6 @@
 	},
 	"eslintConfig": {
 		"extends": "@seancroach/eslint-config-typescript"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run build && npm test"
-		}
 	},
 	"prettier": {
 		"printWidth": 100,
