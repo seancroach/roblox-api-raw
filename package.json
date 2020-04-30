@@ -1,6 +1,6 @@
 {
 	"name": "roblox-api-raw",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Shared ESLint configuration I use across my TypeScript projects.",
 	"license": "MIT",
 	"repository": "seancroach/eslint-config-typescript",
