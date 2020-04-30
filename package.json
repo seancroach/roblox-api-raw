@@ -1,11 +1,12 @@
 {
 	"name": "roblox-api-raw",
-	"version": "0.1.1",
-	"description": "Shared ESLint configuration I use across my TypeScript projects.",
+	"version": "1.0.0",
+	"description": "Retrieve the raw JSON Roblox API Dump.",
 	"license": "MIT",
 	"repository": "seancroach/eslint-config-typescript",
 	"author": "Sean Colin Roach <me@seancroach.com> (http://seancroach.com)",
-	"main": "index.js",
+	"homepage": "https://seancroach.github.io/roblox-api-raw/index.html",
+	"main": "dist/index.js",
 	"engines": {
 		"node": ">=10"
 	},
@@ -26,7 +27,7 @@
 		"test:verbose": "npm run lint && ava --verbose"
 	},
 	"files": [
-		"index.js"
+		"dist"
 	],
 	"keywords": [
 		"api",
@@ -54,6 +55,7 @@
 		"typedoc": "^0.17.6",
 		"typescript": "^3.8.3"
 	},
+	"types": "dist/index.d.ts",
 	"ava": {
 		"files": [
 			"tests/**/*test.ts"
