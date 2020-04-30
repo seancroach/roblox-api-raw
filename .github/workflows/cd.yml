@@ -1,0 +1,144 @@
+# This action deploys the package to NPM and GitHub Packages.
+name: CD
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  # This test ensures the repository, in its current state, functions as
+  # intended.
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+
+      - run: npm run build
+
+      - run: npm test
+
+  # This test ensures the repository, in its current state, could be published
+  # to NPM.
+  publish-npm-test:
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Test publish to NPM
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # This test ensures the repository, in its current state, could be published
+  # to GitHub Packages.
+  publish-gpr-test:
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Configure npm for use with GitHub Packages' registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://npm.pkg.github.com
+
+      - name: Test publish to GitHub Packages
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # This action publishes the package to NPM.
+  publish-npm:
+    # Wait until both publishing tests succeed to prevent only one registry
+    # getting published.
+    needs: [publish-npm-test, publish-gpr-test]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Publish to NPM
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # This action publishes the package to GitHub Packages.
+  publish-gpr:
+    # Wait until both publishing tests succeed to prevent only one registry
+    # getting published.
+    needs: [publish-npm-test, publish-gpr-test]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Configure npm for use with GitHub Packages' registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://npm.pkg.github.com
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

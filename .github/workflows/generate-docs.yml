@@ -1,0 +1,39 @@
+name: Generate Docs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - run: npm install
+
+    - name: Generate docs folder using typedoc
+      run: npm run build:docs
+
+    - run: |
+        cd docs
+        git init
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git remote add origin git@github.com:${GITHUB_REPOSITORY}.git
+        git checkout -b gh-pages
+        git add -A
+        git commit -m "Docs update: ${GITHUB_SHA}"
+
+    - name: Push changes to GitHub Pages
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PUSH_TOKEN }}
+        branch: gh-pages
+        force: true
+        directory: docs

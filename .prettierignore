@@ -2,4 +2,6 @@
 .gitattributes
 .gitignore
 .prettierignore
+dist
+docs
 license

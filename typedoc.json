@@ -1,0 +1,6 @@
+{
+	"exclude": ["**/node_modules/**"],
+	"inputFiles": "source",
+	"mode": "file",
+	"out": "docs"
+}

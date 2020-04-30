@@ -4,7 +4,5 @@
 		"editorconfig.editorconfig",
 		"esbenp.prettier-vscode"
 	],
-	"unwantedRecommendations": [
-		"ms-vscode.vscode-typescript-tslint-plugin"
-	]
+	"unwantedRecommendations": ["ms-vscode.vscode-typescript-tslint-plugin"]
 }

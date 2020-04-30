@@ -1,0 +1,89 @@
+# This action tests if, in the repository's current state, it could be published
+# to both NPM and GitHub Packages.
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  # This test ensures the repository, in its current state, functions as
+  # intended.
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+
+      - run: npm run build
+
+      - run: npm test
+
+  # This test ensures the repository, in its current state, could be published
+  # to NPM.
+  publish-npm-test:
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Test publish to NPM
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # This test ensures the repository, in its current state, could be published
+  # to GitHub Packages.
+  publish-gpr-test:
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure npm for use with NPM's registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org/
+
+      - run: npm install
+
+      - run: npm run build
+
+      - name: Configure npm for use with GitHub Packages' registry
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: https://npm.pkg.github.com
+
+      - name: Test publish to GitHub Packages
+        run: npm publish --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
