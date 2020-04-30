@@ -1,6 +1,9 @@
 {
 	"name": "roblox-api-raw",
-	"version": "1.0.0",
+	"version": "1.0.1",
+	"publishConfig": {
+		"access": "public"
+	},
 	"description": "Retrieve the raw JSON Roblox API Dump.",
 	"license": "MIT",
 	"repository": "seancroach/eslint-config-typescript",
