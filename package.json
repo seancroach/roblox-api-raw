@@ -1,9 +1,6 @@
 {
 	"name": "roblox-api-raw",
-	"version": "1.1.1",
-	"publishConfig": {
-		"access": "public"
-	},
+	"version": "1.2.0",
 	"description": "Retrieve the raw JSON Roblox API Dump.",
 	"license": "MIT",
 	"repository": "seancroach/roblox-api-raw",
@@ -26,8 +23,8 @@
 		"lint:fix": "npm run eslint:fix && npm run prettier:fix",
 		"prettier:check": "prettier '**/*' --check",
 		"prettier:fix": "prettier '**/*' --write",
-		"test": "npm run lint && ava",
-		"test:verbose": "npm run lint && ava --verbose"
+		"test": "npm run lint && npm run build && ava",
+		"test:verbose": "npm run lint && npm run build && ava --verbose"
 	},
 	"files": [
 		"dist"

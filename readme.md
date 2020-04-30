@@ -1,7 +1,8 @@
 [docs-url]: https://seancroach.github.io/roblox-api-raw/globals.html
+[downloads-badge]: https://img.shields.io/npm/dt/roblox-api-raw?logo=npm&style=flat-square
 [github-ci-badge]: https://img.shields.io/github/workflow/status/seancroach/roblox-api-raw/CI?logo=github&style=flat-square
 [github-ci-url]: https://github.com/seancroach/roblox-api-raw/actions?query=workflow%3ACI
-[release-badge]: https://img.shields.io/github/v/release/seancroach/roblox-api-raw?logo=npm&style=flat-square
+[release-badge]: https://img.shields.io/npm/v/roblox-api-raw?label=release&logo=npm&style=flat-square
 [release-url]: https://www.npmjs.com/package/roblox-api-raw
 [license-badge]: https://img.shields.io/github/license/seancroach/roblox-api-raw?style=flat-square
 [license-url]: https://github.com/seancroach/roblox-api-raw/blob/master/license
@@ -10,13 +11,14 @@
 
 [![Build Status][github-ci-badge]][github-ci-url]
 [![Release][release-badge]][release-url]
+[![Downloads][downloads-badge]][release-url]
 [![License][license-badge]][license-url]
 
 _Retrieve the raw JSON Roblox API Dump._
 
 ## Installation
 
-Install `roblox-api-raw` through [npm][release-url]:
+Install `roblox-api-raw` through npm:
 
 ```sh
 $ npm install roblox-api-raw

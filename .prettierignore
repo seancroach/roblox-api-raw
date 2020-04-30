@@ -1,7 +1,7 @@
+dist
+docs
 .editorconfig
 .gitattributes
 .gitignore
 .prettierignore
-dist
-docs
 license
