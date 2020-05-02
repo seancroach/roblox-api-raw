@@ -1,6 +1,6 @@
 {
 	"name": "roblox-api-raw",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"description": "Retrieve the raw JSON Roblox API Dump.",
 	"license": "MIT",
 	"repository": "seancroach/roblox-api-raw",
