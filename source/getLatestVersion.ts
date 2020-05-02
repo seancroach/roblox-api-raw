@@ -1,9 +1,8 @@
-import got from "got";
-
+import { getFromSetup } from "./util";
 /**
  * Retrieves the latest version of Roblox Studio.
  */
 export async function getLatestVersion(): Promise<string> {
-	const response = await got("http://setup.roblox.com/versionQTStudio");
-	return response.body;
+	const version = await getFromSetup("versionQTStudio");
+	return version;
 }
