@@ -1,7 +1,7 @@
 {
-	"extends": "../tsconfig.root.json",
-	"compilerOptions": {
-		"outDir": "../dist"
-	},
-	"include": ["**/*.ts"]
+  "extends": "../tsconfig.root.json",
+  "compilerOptions": {
+    "outDir": "../dist"
+  },
+  "include": ["**/*.ts"]
 }
