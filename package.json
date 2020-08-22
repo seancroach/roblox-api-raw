@@ -21,8 +21,8 @@
     "eslint:fix": "eslint source tests --ext .ts --fix",
     "lint": "npm run eslint:check && npm run prettier:check",
     "lint:fix": "npm run eslint:fix && npm run prettier:fix",
-    "prettier:check": "prettier * --check",
-    "prettier:fix": "prettier * --write",
+    "prettier:check": "prettier ** --check",
+    "prettier:fix": "prettier ** --write",
     "test": "npm run lint && npm run build && ava",
     "test:verbose": "npm run lint && npm run build && ava --verbose"
   },
