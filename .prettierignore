@@ -4,4 +4,5 @@ docs
 .gitattributes
 .gitignore
 .prettierignore
+package-lock.json
 license
