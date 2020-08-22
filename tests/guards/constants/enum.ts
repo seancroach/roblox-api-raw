@@ -4,11 +4,11 @@ import { enumItem, enumItemWithTags } from "./enumItem";
 import { item, itemWithTags } from "./item";
 
 export const enumValue: RobloxApi.Enum = {
-	...item,
-	Items: [enumItem, enumItemWithTags],
+  ...item,
+  Items: [enumItem, enumItemWithTags],
 };
 
 export const enumValueWithTags: RobloxApi.Enum = {
-	...itemWithTags,
-	...enumValue,
+  ...itemWithTags,
+  ...enumValue,
 };

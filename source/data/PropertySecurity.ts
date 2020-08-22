@@ -1,4 +1,4 @@
 export interface PropertySecurity {
-	readonly Read: string;
-	readonly Write: string;
+  readonly Read: string;
+  readonly Write: string;
 }

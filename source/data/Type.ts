@@ -1,4 +1,4 @@
 export interface Type {
-	readonly Category: string;
-	readonly Name: string;
+  readonly Category: string;
+  readonly Name: string;
 }

@@ -4,8 +4,8 @@
  * this is *the* exception.
  */
 export enum MemberType {
-	Callback = "Callback",
-	Event = "Event",
-	Function = "Function",
-	Property = "Property",
+  Callback = "Callback",
+  Event = "Event",
+  Function = "Function",
+  Property = "Property",
 }
